@@ -1,0 +1,52 @@
+.App {
+    padding: 2rem 5vw;
+    text-align: center;
+    color: white;
+    background-color: rgb(17, 17, 17);
+    min-height: 100vh;
+  }
+  
+  .products-cart{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: center;
+  }
+  .products-cart__products{
+    width: 50%;
+  }
+  .products-cart__cart{
+    width: 50%;
+    padding: 0 1rem;
+    background-color: rgba(141, 113, 113, 0.486);
+  }
+  
+  .add-own-product-form{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+  }
+  .add-own-product-form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.3rem 0;
+  }
+  
+  @media (min-width: 760px){
+    .products-cart{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+    }
+  
+  }
+  @media (min-width: 1200px){
+    .add-own-product-form{
+      text-align: left;
+      width: 30%;
+    }
+
+  }
