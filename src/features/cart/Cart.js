@@ -18,8 +18,8 @@ function Cart() {
       <h3>Total Price: {totalPrice}$</h3>
       <div className="cart-items">
         {cart.length > 0 ? (
-          cart.map((item) => (
-            <p key={cart.id}>
+          cart.map((item, i) => (
+            <p key={i}>
               {item.title}, price: {item.price}$, stock: {item.stock}{" "}
               <button onClick={handleRemove.bind(this, item.id)}>
                 Remove -1
