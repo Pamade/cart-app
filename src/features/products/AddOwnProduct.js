@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line prettier/prettier
-import React, {useState, useRef, reset} from "react";
+import React, { useState, useRef } from "react";
 import { addOwnProduct } from "./productsSlice";
 import { useDispatch } from "react-redux";
 function AddOwnProduct() {
@@ -13,7 +11,7 @@ function AddOwnProduct() {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (productName === "" || productPrice === "" || productStock === "") {
-      alert("fill");
+      alert("Fill all fields");
     } else {
       dispatch(
         addOwnProduct({

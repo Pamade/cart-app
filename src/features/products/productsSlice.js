@@ -32,6 +32,12 @@ const productsSlice = createSlice({
       const id = state.products.products.length + 1;
       state.products.products.push({ id, title, price, stock });
     },
+    editProduct: (state, action) => {
+      const { id, title, price, stock } = action.payload;
+      state.products.products[id].title = title;
+      state.products.products[id].price = price;
+      state.products.products[id].stock = stock;
+    },
   },
   extraReducers: {
     [getProducts.pending]: (state) => {
@@ -46,6 +52,7 @@ const productsSlice = createSlice({
     },
   },
 });
-export const { updateProduct, addOwnProduct } = productsSlice.actions;
+export const { updateProduct, addOwnProduct, editProduct } =
+  productsSlice.actions;
 
 export default productsSlice.reducer;
