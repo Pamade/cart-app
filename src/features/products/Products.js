@@ -94,7 +94,7 @@ function Products() {
       {!productInCart ? (
         <div className="edit">
           <div>
-            <p className="edit__p">You cannot add items which are in cart!</p>
+            <p className="edit__p">You cannot edit items which are in cart!</p>
             <p className="edit__p">Fill all fields!</p>
           </div>
           <form ref={formRef} className="edit__form" onSubmit={handleOnSubmit}>
