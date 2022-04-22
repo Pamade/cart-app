@@ -30,7 +30,7 @@ function Products() {
       const chosenItem = products.find((product) => product.id === productId);
       setEditingItem(chosenItem);
     } else {
-      alert("Product in cart - you cannot add item which is in cart!");
+      alert("Product in cart - you cannot edit item which is in cart!");
     }
   };
 
