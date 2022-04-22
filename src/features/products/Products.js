@@ -7,10 +7,10 @@ import { updateProduct } from "../products/productsSlice";
 
 function Products() {
   const dispatch = useDispatch();
+  const formRef = useRef(null);
   const products = useSelector((state) => state.products.products.products);
   const status = useSelector((state) => state.products.status);
   const cart = useSelector((state) => state.cart.cart);
-  const formRef = useRef(null);
   const [productInCart, setProductInCart] = useState(true);
   const [editingItem, setEditingItem] = useState({});
   const [productName, setProductName] = useState("");
@@ -29,6 +29,8 @@ function Products() {
     if (typeof productInCartFound === "undefined") {
       const chosenItem = products.find((product) => product.id === productId);
       setEditingItem(chosenItem);
+    } else {
+      alert("Product in cart - you cannot add item which is in cart!");
     }
   };
 
@@ -131,3 +133,15 @@ function Products() {
 }
 
 export default Products;
+// import { TextField } from "@mui/material";
+// import { makeStyles } from "@material-ui/styles";
+
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     "& .MuiInput-root": {
+//       backgroundColor: "white",
+//       padding: "0 0.2rem",
+//       fontSize: "14px",
+//     },
+//   },
+// }));

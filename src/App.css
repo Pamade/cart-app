@@ -46,6 +46,7 @@
   }
   .edit__box{
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
   @media (min-width: 700px){
