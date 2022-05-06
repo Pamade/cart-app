@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useRef } from "react";
 import { getProducts, editProduct } from "./productsSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,9 +12,7 @@ function Products() {
   const cart = useSelector((state) => state.cart.cart);
   const [productInCart, setProductInCart] = useState(true);
   const [editingItem, setEditingItem] = useState({});
-  const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [productStock, setProductStock] = useState("");
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -41,19 +38,26 @@ function Products() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    if (productName === "" || productPrice === "" || productStock === "") {
+    if (product.name === "" || product.price === "" || product.stock === "") {
       return alert("Fill all fields");
     }
     dispatch(
       editProduct({
         id: editingItem.id - 1,
-        title: productName,
-        price: Number(productPrice),
-        stock: Number(productStock),
+        title: product.name,
+        price: Number(product.price),
+        stock: Number(product.stock),
       })
     );
     setProductInCart(true);
     setEditingItem({});
+  };
+
+  const handleChange = (e) => {
+    setProduct({
+      ...product,
+      [e.target.name]: e.target.value,
+    });
   };
 
   if (status === "loading") {
@@ -103,24 +107,15 @@ function Products() {
             <h2>Edit {editingItem.title}</h2>
             <div className="edit__box">
               <label>Product Name</label>
-              <input
-                type="text"
-                onChange={(e) => setProductName(e.target.value)}
-              />
+              <input name="name" type="text" onChange={handleChange} />
             </div>
             <div className="edit__box">
               <label>Product Price</label>
-              <input
-                type="number"
-                onChange={(e) => setProductPrice(e.target.value)}
-              />
+              <input name="price" type="number" onChange={handleChange} />
             </div>
             <div className="edit__box">
               <label>Product Stock</label>
-              <input
-                type="number"
-                onChange={(e) => setProductStock(e.target.value)}
-              />
+              <input name="stock" type="number" onChange={handleChange} />
             </div>
             <button type="submit">Edit Item</button>
           </form>
@@ -133,15 +128,3 @@ function Products() {
 }
 
 export default Products;
-// import { TextField } from "@mui/material";
-// import { makeStyles } from "@material-ui/styles";
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     "& .MuiInput-root": {
-//       backgroundColor: "white",
-//       padding: "0 0.2rem",
-//       fontSize: "14px",
-//     },
-//   },
-// }));
